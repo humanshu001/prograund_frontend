@@ -30,16 +30,13 @@ export default function Register() {
         const data = new FormData(e.target);
 
         // Send the data to the server
-        if(data.get("lname")===null){
-            data.set('lname','');
-        }
         console.log('fetching');
         await fetch(url, {
             method: 'POST',
 
             body: JSON.stringify({
                 fname: data.get('fname'),
-                lname: data.get('lname'),
+                lname: data.get('lname')||" ",
                 username: data.get('username'),
                 email: data.get('email'),
                 number: data.get('mobile'),
