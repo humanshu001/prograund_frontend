@@ -59,7 +59,7 @@ export default function RAside() {
 
                     <img src={user.image? "https://foolish-moth-88.telebit.io/Files/"+user.image : defaultImage} alt="" />
                   </div>
-                    <Link to='/my-profile' style={{textDecoration:'none',color:'var(--color-)'}}><h4>{user.username}</h4></Link>
+                    <Link to={`/profile/${sessionStorage.getItem('sessionId')}`} style={{textDecoration:'none',color:'var(--color-)'}}><h4>{user.username}</h4></Link>
             <button className='btn not-in-mobile p-2 text-center' onClick={logout} style={{backgroundColor: "var(--color-4)",color: "var(--color-1)",borderRadius: "5px",fontSize: "17px",marginTop: "10px",width:'145px',margin:'5px auto'}}>Logout</button>
             <Link className='btn not-in-mobile p-2 text-center' style={{backgroundColor: "var(--color-3)",color: "var(--color-1)",borderRadius: "5px",fontSize: "17px",marginTop: "10px",width:'145px',margin:'5px auto'}} to="/edit-profile">Edit Profile</Link>
                 </div>

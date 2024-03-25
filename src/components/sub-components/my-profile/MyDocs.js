@@ -8,6 +8,8 @@ export default function MyDocs() {
 
   const [docs, setDocs] = useState([{}]);
 
+  const user_id = parseInt(window.location.href.split('/')[4]) || 1;
+
   const getDocs = ()=>
   {
     fetch(url,{
@@ -21,7 +23,7 @@ export default function MyDocs() {
     
     .then(response => response.json())
     .then(data => {
-      setDocs(data.filter(doc => doc.user_id == sessionStorage.getItem("sessionId")));
+      setDocs(data.filter(doc => doc.user_id == user_id));
       // setDocs(data);
     })
     .catch((error) => {

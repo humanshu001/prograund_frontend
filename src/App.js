@@ -44,7 +44,7 @@ function App() {
                   <Route path="inspect-world" element={<InspectWorld/>}/>
                 </Route>
                 <Route path="/configuration" element={<Configuration/>}/>
-                <Route path="/my-profile" element={<MyProfile/>}>
+                <Route path="/profile/:id" element={<MyProfile/>}>
                   <Route index element={<Snippets/>}/>
                   <Route path="snippets" element={<Snippets/>}/>
                   <Route path="joy-source" element={<JoySources/>}/>

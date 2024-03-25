@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import profile from '../../../../assets/profile.png';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 
 
@@ -122,7 +123,7 @@ export default function PostItem(props) {
                     <div className="d-flex">
                         <img src={user.image? "https://foolish-moth-88.telebit.io/Files/"+user.image : profile} alt="" style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "15px", border: "2px solid var(--color-4)" }} />
                         <div className="user-info">
-                            <h5 className="m-0" >{user.username?user.username:" "}</h5>
+                            <Link to={`/profile/${user_id}`} style={{color:'var(--color-5)'}}><h5 className="m-0" >{user.username?user.username:" "}</h5></Link>
                             <p className="m-0">{
                                 time !== null ? moment(time).fromNow() : "Just now"
                             }</p>

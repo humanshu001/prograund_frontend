@@ -2,8 +2,13 @@ import React from 'react'
 import PostItem from '../dashboard-components/Post Item/PostItem'
 import { useState, useEffect } from 'react'
 
-export default function Snippets() {
+
+export default function JoySources() {
   const url = "https://foolish-moth-88.telebit.io/posts/";
+
+  // declare props
+
+  const user_id = parseInt(window.location.href.split('/')[4]) || 1;
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +23,7 @@ export default function Snippets() {
     })
       .then(response => response.json())
       .then(data => {
-        setPosts(data.filter(item => item.user_id == parseInt(sessionStorage.getItem('sessionId'))));
+        setPosts(data.filter(item => item.user_id == parseInt(user_id)));
         setLoading(false);
       })
       .catch((error) => {
