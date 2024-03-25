@@ -47,7 +47,7 @@ export default function EditProfile() {
             }else{
                 
                 alert('Profile Updated Successfully');
-                window.location = '/my-profile';
+                window.location = '/dashboard';
             }
         })
     }
@@ -92,7 +92,7 @@ export default function EditProfile() {
                         alert(data.error);
                     }else{
                         alert('Profile Image Updated Successfully');
-                        window.location = '/my-profile';
+                        window.location = '/dashboard';
                     }
                 })
             }
@@ -138,7 +138,7 @@ export default function EditProfile() {
                         alert(data.error);
                     }else{
                         alert('Banner Updated Successfully');
-                        window.location = '/das';
+                        window.location = '/dashboard';
                     }
                 })
             }
