@@ -138,7 +138,7 @@ export default function EditProfile() {
                         alert(data.error);
                     }else{
                         alert('Banner Updated Successfully');
-                        window.location = '/my-profile';
+                        window.location = '/das';
                     }
                 })
             }
@@ -164,6 +164,17 @@ export default function EditProfile() {
         }
 
         getUserData();
+
+        setUser(
+            {
+                fname: user.fname,
+                lname: user.lname,
+                number: user.number,
+                username: user.username,
+                email: user.email,
+                bio: user.bio
+            }
+        )
 
     }, [url, user_id]);
 

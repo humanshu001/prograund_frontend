@@ -36,7 +36,7 @@ export default function Register() {
 
             body: JSON.stringify({
                 fname: data.get('fname'),
-                lname: data.get('lname')||" ",
+                lname: data.get('lname'),
                 username: data.get('username'),
                 email: data.get('email'),
                 number: data.get('mobile'),
