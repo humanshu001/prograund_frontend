@@ -5,8 +5,8 @@ export default function Host() {
   const url = "https://foolish-moth-88.telebit.io/posts/";
   const fileUrl = "https://foolish-moth-88.telebit.io/posts/savefile";
   
-  // const url = "http://127.0.0.1:8000/posts/";
-  // const fileUrl = "http://127.0.0.1:8000/posts/savefile";
+  // const url = "https://foolish-moth-88.telebit.io/posts/";
+  // const fileUrl = "https://foolish-moth-88.telebit.io/posts/savefile";
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
 
@@ -46,7 +46,7 @@ export default function Host() {
                 title: data.get("title"),
                 type: data.get("type"),
                 file: fileName,
-                user_id: sessionStorage.getItem("sessionId"),
+                user_id: localStorage.getItem("sessionId"),
                 likes_count: 0,
                 share_count: 0,
               }),
@@ -88,7 +88,7 @@ export default function Host() {
           body: JSON.stringify({
             title: data.get("title"),
             type: data.get("type"),
-            user_id: sessionStorage.getItem("sessionId"),
+            user_id: localStorage.getItem("sessionId"),
             likes_count: 0,
             share_count: 0,
           }),

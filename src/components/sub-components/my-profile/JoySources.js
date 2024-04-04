@@ -1,6 +1,7 @@
 import React from 'react'
 import PostItem from '../dashboard-components/Post Item/PostItem'
 import { useState, useEffect } from 'react'
+import Loader from '../Loader';
 
 
 export default function JoySources() {
@@ -38,11 +39,7 @@ export default function JoySources() {
   return (
     <>
       {loading ? (
-        <div className="col-md-12 d-flex justify-content-center">
-          <div className="spinner-border text-info m-auto" role="status">
-            <span className="visually-hidden"></span>
-          </div>
-        </div>
+        <Loader/>
       ) : (
         posts
           .filter((item) => item.type === "Funny")
@@ -53,6 +50,9 @@ export default function JoySources() {
                 user_id={parseInt(item.user_id)}
                 time={item.uploaded_time}
                 image_link={item.file}
+                username={item.user.username}
+                image={item.user.image}
+                
               />
             </div>
           ))

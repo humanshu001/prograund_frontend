@@ -2,7 +2,7 @@ import React from 'react'
 import logo from "../../assets/logo.png"
 import Swal from 'sweetalert2'
 export default function Login() {
-    if(sessionStorage.getItem("sessionId") !== null){
+    if(localStorage.getItem("sessionId") !== null){
         window.location.href="/dashboard";
     }
     const url = "https://foolish-moth-88.telebit.io/auth/";
@@ -43,8 +43,7 @@ export default function Login() {
                 }
                 else{
 
-                    console.log(data);
-                    sessionStorage.setItem("sessionId",data.user_id);
+                    localStorage.setItem("sessionId",data.user_id);
                     Swal.fire({
                         title: "Login Successfully!",
                         color: "var(--color-5)",

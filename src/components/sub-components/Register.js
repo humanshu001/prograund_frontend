@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import logo from "../../assets/logo.png"
+import Loader from './Loader';
 
 export default function Register() {
-    if(sessionStorage.getItem("sessionId") !== null){
+    if(localStorage.getItem("sessionId") !== null){
         window.location.href="/dashboard";
     }
 
     const [password, setPassword] = useState('');
     const [cpassword, setCPassword] = useState('');
     const url = "https://foolish-moth-88.telebit.io/users/";
+    const [loading,setLoading] = useState(false);
 
 
     const handlePasswordChange = (e) => {
@@ -21,16 +23,15 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Check if the password and confirm password are same
+        setLoading(true);
         if (password !== cpassword) {
+            setLoading(false);
             alert('Password and confirm password are not same');
             return;
         }
 
         const data = new FormData(e.target);
 
-        // Send the data to the server
-        console.log('fetching');
         await fetch(url, {
             method: 'POST',
 
@@ -50,7 +51,7 @@ export default function Register() {
                 if (data.error) {
                     alert(data.error);
                 } else {
-                    console.log(data);
+                    setLoading(false);
                     alert('User registered successfully');
                     window.location = '/login';
 
@@ -64,6 +65,10 @@ export default function Register() {
 
     return (
         <>
+
+            {loading?
+            <Loader/>
+           :null}
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <style

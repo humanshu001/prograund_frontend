@@ -27,6 +27,7 @@ import HostDocs from './components/sub-components/HostDocs';
 import ReadDocs from './components/sub-components/ReadDocs';
 import EditProfile from './components/sub-components/EditProfile';
 import ResetPassword from './components/sub-components/ResetPassword';
+import ChatView from './components/sub-components/ChatView';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
                 <Route path="/host" element={<Host/>}/>
                 <Route path="/reset-password" element={<ResetPassword/>}/>
                 <Route path="/read-docs/:id" element={<ReadDocs/>}/>
+                <Route path="/chat/:id" element={<ChatView/>}/>
                 <Route path="/host-doc" element={<HostDocs/>}/>
                 <Route path="/edit-profile" element={<EditProfile/>}/>
                 <Route path="/inbox" element={<Inbox/>}/>

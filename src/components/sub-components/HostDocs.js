@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HostDocs() {
   const url = 'https://foolish-moth-88.telebit.io/docs/';
-  // const url = "http://127.0.0.1:8000/docs/";
+  // const url = "https://foolish-moth-88.telebit.io/docs/";
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ export default function HostDocs() {
           // Include other headers as needed
       },
       body: JSON.stringify({
-        user_id: sessionStorage.getItem("sessionId"),
+        user_id: localStorage.getItem("sessionId"),
         title: titleArea.innerHTML,
         content: docArea.innerHTML,
         likes_count: 0,
