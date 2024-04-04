@@ -50,7 +50,7 @@ export default function DebugStress() {
       ) : (
         <>
           {posts.map((item) => (
-            <div key={item.post_id}><PostItem title={item.title} post_id={item.post_id} time={item.uploaded_time} user_id={parseInt(item.user_id)} image_link={item.file}/></div>
+            <div key={item.post_id}><PostItem title={item.title} post_id={item.post_id} time={item.uploaded_time} likes_count={item.likes_count} user_id={parseInt(item.user_id)} image_link={item.file}/></div>
           ))}
         </>
       )}

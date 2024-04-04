@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 
 export default function EditProfile() {
-    const user_id = parseInt(sessionStorage.getItem("sessionId"));
+    const user_id = parseInt(localStorage.getItem("sessionId"));
 
     const url = `https://foolish-moth-88.telebit.io/users/`;
 
@@ -31,7 +31,7 @@ export default function EditProfile() {
                 // Include other headers as needed
             },
             body: JSON.stringify({
-                id: sessionStorage.getItem("sessionId"),
+                id: localStorage.getItem("sessionId"),
                 fname: data.get("fname"),
                 lname: data.get("lname"),
                 username: data.get("username"),
@@ -82,7 +82,7 @@ export default function EditProfile() {
                         // Include other headers as needed
                     },
                     body: JSON.stringify({
-                        id: sessionStorage.getItem("sessionId"),
+                        id: localStorage.getItem("sessionId"),
                         image: fileName
                     })
                 })
@@ -128,7 +128,7 @@ export default function EditProfile() {
                         // Include other headers as needed
                     },
                     body: JSON.stringify({
-                        id: sessionStorage.getItem("sessionId"),
+                        id: localStorage.getItem("sessionId"),
                         banner: bannerFileName
                     })
                 })

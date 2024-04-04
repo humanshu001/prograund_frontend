@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png"
 import Loader from './Loader';
 
 export default function Register() {
-    if(sessionStorage.getItem("sessionId") !== null){
+    if(localStorage.getItem("sessionId") !== null){
         window.location.href="/dashboard";
     }
 

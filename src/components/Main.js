@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 
 
 export default function Main() {
-  if(sessionStorage.getItem("sessionId") === null){
+  if(localStorage.getItem("sessionId") === null){
     return <Navigate to="/login" />
   }
   return (
