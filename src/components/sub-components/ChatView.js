@@ -23,7 +23,7 @@ export default function ChatView() {
                 setMessages(data);
                 setLoading(false);
             })
-        }, 2000);
+        }, 500);
         return () => clearInterval(interval);
     },[user_id,id]);
     
