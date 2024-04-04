@@ -1,6 +1,7 @@
 import React from 'react'
 import PostItem from '../dashboard-components/Post Item/PostItem'
 import { useState, useEffect } from 'react'
+import Loader from '../Loader';
 
 export default function Snippets(props) {
   const url = "https://foolish-moth-88.telebit.io/posts/";
@@ -35,11 +36,7 @@ export default function Snippets(props) {
   return (
     <>
       {loading ? (
-        <div className="col-md-12 d-flex justify-content-center">
-          <div className="spinner-border text-info m-auto" role="status">
-            <span className="visually-hidden"></span>
-          </div>
-        </div>
+        <Loader/>
       ) : (
         posts
           .filter((item) => item.type === "Professional")
