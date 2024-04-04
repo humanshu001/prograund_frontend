@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from "../../assets/logo.png"
 
 export default function Register() {
-    if(sessionStorage.getItem("sessionId") !== null){
+    if(localStorage.getItem("sessionId") !== null){
         window.location.href="/dashboard";
     }
 

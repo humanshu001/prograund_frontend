@@ -20,7 +20,7 @@ export default function ResetPassword() {
             const data = await response.json();
 
             // filter the user with the id and check if the password is correct
-            const filteredUser = data.filter((item) => item.id === parseInt(sessionStorage.getItem("sessionId")))[0];
+            const filteredUser = data.filter((item) => item.id === parseInt(localStorage.getItem("sessionId")))[0];
 
             if (filteredUser.password === formData.get("old-password")) {
                 await changePassword(e);
@@ -44,7 +44,7 @@ export default function ResetPassword() {
                     // Include other headers as needed
                 },
                 body: JSON.stringify({
-                    id: sessionStorage.getItem("sessionId"),
+                    id: localStorage.getItem("sessionId"),
                     password: formData.get("password"),
                 }),
             });

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function Configuration() {
   const logout = () => {
-    sessionStorage.removeItem('sessionId');
+    localStorage.removeItem('sessionId');
     window.location = '/login';
   }
   return (

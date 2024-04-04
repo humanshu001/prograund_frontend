@@ -46,7 +46,7 @@ export default function Host() {
                 title: data.get("title"),
                 type: data.get("type"),
                 file: fileName,
-                user_id: sessionStorage.getItem("sessionId"),
+                user_id: localStorage.getItem("sessionId"),
                 likes_count: 0,
                 share_count: 0,
               }),
@@ -88,7 +88,7 @@ export default function Host() {
           body: JSON.stringify({
             title: data.get("title"),
             type: data.get("type"),
-            user_id: sessionStorage.getItem("sessionId"),
+            user_id: localStorage.getItem("sessionId"),
             likes_count: 0,
             share_count: 0,
           }),

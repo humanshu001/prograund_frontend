@@ -3,48 +3,123 @@ import profile from '../../../../assets/profile.png';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
-
-
-
 export default function PostItem(props) {
-    let { title, image_link, user_id, post_id, time } = props;
+    let { title, image_link, user_id, post_id, likes_count, time } = props;
 
-    const url = `https://foolish-moth-88.telebit.io/users/`;
-    const likeUrl = `https://foolish-moth-88.telebit.io/likes/`;
+    const url = `http://127.0.0.1:8000/users/`;
+    const likeUrl = `http://127.0.0.1:8000/likes/`;
 
-    
+
     const [user, setUser] = useState({});
     const [liked, setLiked] = useState(false);
-   
+    const [likeId, setLikeId] = useState(null);
+    const [likeCount, setLikeCount] = useState(likes_count);
 
-    const Like = () => {
-        fetch(likeUrl, {
-            method: 'POST',
-            body: JSON.stringify({
-                post_id: post_id,
-                user_id: parseInt(sessionStorage.getItem('sessionId'))
-            })
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                if (data.error) {
-                    alert(data.error);
-                } else {
-                    setLiked(!liked);
+    const checkLikeByUser = async () => {
+        try {
+            const response = await fetch(likeUrl, {
+                method: 'GET',
+                headers: {
+                    "ngrok-skip-browser-warning": "1", // Add this header
+                    // Include other headers as needed
                 }
             });
+            const data = await response.json();
+            const filteredLikes = data.filter((item) => item.post_id == post_id && item.user_id == parseInt(localStorage.getItem('sessionId')));
+            if (filteredLikes.length > 0) {
+                setLiked(true);
+                setLikeId(filteredLikes[0].id);
+            } else {
+                setLiked(false);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    const Like = () => {
+        if(!liked){
+            console.log("Like");
+            console.log(likeId);
+            fetch(likeUrl, {
+                method: 'POST',
+                body: JSON.stringify({
+                    post_id: parseInt(post_id),
+                    user_id: parseInt(localStorage.getItem('sessionId'))
+                })
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    // console.log(data);
+                    if (data == "Added Successfully"){
+                        checkLikeByUser();
+                        const postUrl = "http://127.0.0.1:8000/posts/"
+                        fetch(postUrl, {
+                            method: 'PUT',
+                            body: JSON.stringify({
+                                post_id: parseInt(post_id),
+                                likes_count: likeCount+1
+                            })
+                        })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            console.log(data);
+                            if (data.error) {
+                                alert(data.error);
+                            } else {
+                                setLiked(!liked);
+                                setLikeCount(likes_count+1);
+                            }
+                        });
+                    }
+                });
+        }
+        else{
+            console.log("Dislike");
+            console.log(likeId);
+            fetch(`${likeUrl}${likeId}/`, {
+                method: 'DELETE',
+                body: JSON.stringify({
+                    id: parseInt(likeId)
+                })
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                // console.log(data);
+                if (data == "Deleted Successfully"){
+                    checkLikeByUser();
+                    const postUrl = "http://127.0.0.1:8000/posts/"
+                        fetch(postUrl, {
+                            method: 'PUT',
+                            body: JSON.stringify({
+                                post_id: parseInt(post_id),
+                                likes_count: likeCount-1
+                            })
+                        })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            console.log(data);
+                            if (data.error) {
+                                alert(data.error);
+                            } else {
+                                setLiked(!liked);
+                                setLikeCount(likes_count-1);
+                            }
+                        });
+                }
+
+        });
+    };
     };
 
-
-    const trackUrl = `https://foolish-moth-88.telebit.io/trackers/`;
+    const trackUrl = `http://127.0.0.1:8000/trackers/`;
 
     const Track = () => {
         fetch(trackUrl, {
             method: 'POST',
             body: JSON.stringify({
                 user_id: user_id,
-                tracked_by: parseInt(sessionStorage.getItem('sessionId'))
+                tracked_by: parseInt(localStorage.getItem('sessionId'))
             })
         })
 
@@ -60,33 +135,14 @@ export default function PostItem(props) {
     };
 
     const unTrack = () => {
-        
-    }
+
+    };
 
 
 
 
     useEffect(() => {
-        const checkLikeByUser = async () => {
-            try {
-                const response = await fetch(likeUrl, {
-                    method: 'GET',
-                    headers: {
-                        "ngrok-skip-browser-warning": "1", // Add this header
-                        // Include other headers as needed
-                    }
-                });
-                const data = await response.json();
-                const filteredLikes = data.filter((item) => item.post_id == post_id && item.user_id == parseInt(sessionStorage.getItem('sessionId')));
-                if (filteredLikes.length > 0) {
-                    setLiked(true);
-                } else {
-                    setLiked(false);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+        
 
         checkLikeByUser();
         const fetchUserDetails = async () => {
@@ -114,16 +170,14 @@ export default function PostItem(props) {
 
     }, [user_id, url]);
 
-
-
     return (
         <>
             <div className="post p-3 card col-md-10 col-sm-12 m-auto" style={{ borderRadius: "20px", backgroundColor: "var(--color-2)" }}>
                 <div className="" style={{ display: "flex", justifyContent: "space-between" }}>
                     <div className="d-flex">
-                        <img src={user.image? "https://foolish-moth-88.telebit.io/Files/"+user.image : profile} alt="" style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "15px", border: "2px solid var(--color-4)" }} />
+                        <img src={user.image ? "https://foolish-moth-88.telebit.io/Files/" + user.image : profile} alt="" style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "15px", border: "2px solid var(--color-4)" }} />
                         <div className="user-info">
-                            <Link to={`/profile/${user_id}`} style={{color:'var(--color-5)'}}><h5 className="m-0" >{user.username?user.username:" "}</h5></Link>
+                            <Link to={`/profile/${user_id}`} style={{ color: 'var(--color-5)' }}><h5 className="m-0" >{user.username ? user.username : " "}</h5></Link>
                             <p className="m-0">{
                                 time !== null ? moment(time).fromNow() : "Just now"
                             }</p>
@@ -143,7 +197,7 @@ export default function PostItem(props) {
                 </p>
                 {image_link == null || <img src={"https://foolish-moth-88.telebit.io/Files/" + image_link} className="col-md-10 m-auto " alt="" />}
                 <div className="actions d-flex justify-content-between mx-2 my-2">
-                <button className={liked ? "liked" : ""} style={{ background: "transparent", border: "none", color: liked ? "red" : "var(--color-5)" }} onClick={Like}  disabled={liked}>
+                    <button className={liked ? "liked" : ""} style={{ background: "transparent", border: "none", color: liked ? "red" : "var(--color-5)" }} onClick={Like}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--color-5)" className="bi bi-heart" viewBox="0 0 16 16">
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
                         </svg>
@@ -169,4 +223,3 @@ PostItem.defaultProps = {
     title: "This is a test post",
     // image_link: "https://source.unsplash.com/random/400x400"
 };
-  

@@ -16,7 +16,7 @@ export default function HostDocs() {
           // Include other headers as needed
       },
       body: JSON.stringify({
-        user_id: sessionStorage.getItem("sessionId"),
+        user_id: localStorage.getItem("sessionId"),
         title: titleArea.innerHTML,
         content: docArea.innerHTML,
         likes_count: 0,
