@@ -158,7 +158,7 @@ export default function PostItem(props) {
                         <span key={index}>{line}<br /></span>
                     ))}
                 </p>
-                {image_link == null || <img src={"https://foolish-moth-88.telebit.io/Files/" + image_link} className="col-md-10 m-auto " alt="" />}
+                {image_link == null || <img src={"https://foolish-moth-88.telebit.io/Files/" + image_link} className="col-md-11 m-auto " alt="" />}
                 <div className="actions d-flex justify-content-between mx-2 my-2">
                     <button className={liked ? "liked" : ""} style={{ background: "transparent", border: "none", color: liked ? "red" : "var(--color-5)" }} onClick={Like}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--color-5)" className="bi bi-heart" viewBox="0 0 16 16">
