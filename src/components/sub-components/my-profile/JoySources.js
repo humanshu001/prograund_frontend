@@ -50,6 +50,9 @@ export default function JoySources() {
                 user_id={parseInt(item.user_id)}
                 time={item.uploaded_time}
                 image_link={item.file}
+                username={item.user.username}
+                image={item.user.image}
+                
               />
             </div>
           ))

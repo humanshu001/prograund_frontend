@@ -147,7 +147,7 @@ export default function EditProfile() {
 
     useEffect(() => {
         const getUserData = async () => {
-            await fetch(url,{
+            await fetch("https://foolish-moth-88.telebit.io/profile/" + user_id,{
                 method: 'GET',
                 headers: {
                     "ngrok-skip-browser-warning": "1"
@@ -155,7 +155,7 @@ export default function EditProfile() {
             })
             .then(response => response.json())
             .then(data => {
-                setUser(data.filter((item) => item.id === user_id)[0]);
+                setUser(data);
                 
             })
             .catch((error) => {

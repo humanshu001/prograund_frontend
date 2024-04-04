@@ -3,8 +3,8 @@ import PostItem from './Post Item/PostItem'
 import Loader from '../Loader';
 
 export default function DebugStress() {
+  // const url = 'https://foolish-moth-88.telebit.io/funny/';
   const url = 'https://foolish-moth-88.telebit.io/funny/';
-  // const url = 'http://127.0.0.1:8000/posts/';
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -50,7 +50,7 @@ export default function DebugStress() {
       ) : (
         <>
           {posts.map((item) => (
-            <div key={item.post_id}><PostItem title={item.title} post_id={item.post_id} time={item.uploaded_time} likes_count={item.likes_count} user_id={parseInt(item.user_id)} image_link={item.file}/></div>
+            <div key={item.post_id}><PostItem title={item.title} post_id={item.post_id} time={item.uploaded_time} likes_count={item.likes_count} user_id={parseInt(item.user_id)} image_link={item.file} username={item.user.username} image={item.user.image} /></div>
           ))}
         </>
       )}

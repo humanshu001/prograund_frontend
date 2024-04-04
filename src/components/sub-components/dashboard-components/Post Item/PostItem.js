@@ -4,13 +4,12 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 export default function PostItem(props) {
-    let { title, image_link, user_id, post_id, likes_count, time } = props;
+    let { title, image_link, user_id, post_id, likes_count, time, image, username } = props;
 
-    const url = `http://127.0.0.1:8000/users/`;
-    const likeUrl = `http://127.0.0.1:8000/likes/`;
+    const url = `https://foolish-moth-88.telebit.io/users/`;
+    const likeUrl = `https://foolish-moth-88.telebit.io/likes/`;
 
 
-    const [user, setUser] = useState({});
     const [liked, setLiked] = useState(false);
     const [likeId, setLikeId] = useState(null);
     const [likeCount, setLikeCount] = useState(likes_count);
@@ -38,9 +37,7 @@ export default function PostItem(props) {
     }
 
     const Like = () => {
-        if(!liked){
-            console.log("Like");
-            console.log(likeId);
+        if (!liked) {
             fetch(likeUrl, {
                 method: 'POST',
                 body: JSON.stringify({
@@ -50,69 +47,61 @@ export default function PostItem(props) {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    // console.log(data);
-                    if (data == "Added Successfully"){
+                    if (data === "Added Successfully") {
                         checkLikeByUser();
-                        const postUrl = "http://127.0.0.1:8000/posts/"
+                        const postUrl = "https://foolish-moth-88.telebit.io/posts/";
                         fetch(postUrl, {
                             method: 'PUT',
                             body: JSON.stringify({
                                 post_id: parseInt(post_id),
-                                likes_count: likeCount+1
+                                likes_count: likeCount + 1
                             })
                         })
-                        .then((res) => res.json())
-                        .then((data) => {
-                            console.log(data);
-                            if (data.error) {
-                                alert(data.error);
-                            } else {
-                                setLiked(!liked);
-                                setLikeCount(likes_count+1);
-                            }
-                        });
+                            .then((res) => res.json())
+                            .then((data) => {
+                                if (data.error) {
+                                    alert(data.error);
+                                } else {
+                                    setLiked(true);
+                                    setLikeCount(likes_count + 1);
+                                }
+                            });
                     }
                 });
-        }
-        else{
-            console.log("Dislike");
-            console.log(likeId);
+        } else {
             fetch(`${likeUrl}${likeId}/`, {
                 method: 'DELETE',
                 body: JSON.stringify({
                     id: parseInt(likeId)
                 })
             })
-            .then((res) => res.json())
-            .then((data) => {
-                // console.log(data);
-                if (data == "Deleted Successfully"){
-                    checkLikeByUser();
-                    const postUrl = "http://127.0.0.1:8000/posts/"
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data === "Deleted Successfully") {
+                        checkLikeByUser();
+                        const postUrl = "https://foolish-moth-88.telebit.io/posts/";
                         fetch(postUrl, {
                             method: 'PUT',
                             body: JSON.stringify({
                                 post_id: parseInt(post_id),
-                                likes_count: likeCount-1
+                                likes_count: likeCount - 1
                             })
                         })
-                        .then((res) => res.json())
-                        .then((data) => {
-                            console.log(data);
-                            if (data.error) {
-                                alert(data.error);
-                            } else {
-                                setLiked(!liked);
-                                setLikeCount(likes_count-1);
-                            }
-                        });
-                }
-
-        });
-    };
+                            .then((res) => res.json())
+                            .then((data) => {
+                                if (data.error) {
+                                    alert(data.error);
+                                } else {
+                                    setLiked(false);
+                                    setLikeCount(likes_count - 1);
+                                }
+                            });
+                    }
+                });
+        }
     };
 
-    const trackUrl = `http://127.0.0.1:8000/trackers/`;
+    const trackUrl = `https://foolish-moth-88.telebit.io/trackers/`;
 
     const Track = () => {
         fetch(trackUrl, {
@@ -125,7 +114,6 @@ export default function PostItem(props) {
 
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 if (data.error) {
                     alert(data.error);
                 } else {
@@ -142,32 +130,7 @@ export default function PostItem(props) {
 
 
     useEffect(() => {
-        
-
         checkLikeByUser();
-        const fetchUserDetails = async () => {
-            try {
-                const response = await fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        "ngrok-skip-browser-warning": "1", // Add this header
-                        // Include other headers as needed
-                    }
-                });
-                const data = await response.json();
-                const filteredUsers = data.filter((item) => item.id === parseInt(user_id));
-                if (filteredUsers.length > 0) {
-                    setUser(filteredUsers[0]);
-                } else {
-                    console.error('User not found');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        };
-
-        fetchUserDetails();
-
     }, [user_id, url]);
 
     return (
@@ -175,9 +138,9 @@ export default function PostItem(props) {
             <div className="post p-3 card col-md-10 col-sm-12 m-auto" style={{ borderRadius: "20px", backgroundColor: "var(--color-2)" }}>
                 <div className="" style={{ display: "flex", justifyContent: "space-between" }}>
                     <div className="d-flex">
-                        <img src={user.image ? "https://foolish-moth-88.telebit.io/Files/" + user.image : profile} alt="" style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "15px", border: "2px solid var(--color-4)" }} />
+                        <img src={image ? "https://foolish-moth-88.telebit.io/Files/" + image : profile} alt="" style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "15px", border: "2px solid var(--color-4)" }} />
                         <div className="user-info">
-                            <Link to={`/profile/${user_id}`} style={{ color: 'var(--color-5)' }}><h5 className="m-0" >{user.username ? user.username : " "}</h5></Link>
+                            <Link to={`/profile/${user_id}`} style={{ color: 'var(--color-5)' }}><h5 className="m-0" >{username ? username : " "}</h5></Link>
                             <p className="m-0">{
                                 time !== null ? moment(time).fromNow() : "Just now"
                             }</p>

@@ -43,7 +43,6 @@ export default function Login() {
                 }
                 else{
 
-                    console.log(data);
                     localStorage.setItem("sessionId",data.user_id);
                     Swal.fire({
                         title: "Login Successfully!",

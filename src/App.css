@@ -463,7 +463,9 @@ a:hover {
     flex-direction: row-reverse;
     align-items: center;
   }
-
+  .chat-container{
+    height: 89vh!important;
+  }
   .nav-div svg {
       width: 20px;
       margin-right: 5px;

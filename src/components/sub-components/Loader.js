@@ -8,7 +8,7 @@ return (
         }}>
         </style>
       
-            <div className="card px-5 py-3" style={{backgroundColor:'var(--color-2)',height:"400px",borderRadius:'30px'}}>
+            <div className="card px-5 py-3 col-md-6 m-auto" style={{backgroundColor:'var(--color-2)',height:"400px",borderRadius:'30px'}}>
         <div className="d-flex justify-content-center">
         <div className="loader">
                 <span></span>
