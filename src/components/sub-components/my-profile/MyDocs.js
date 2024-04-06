@@ -4,7 +4,7 @@ import DocsItem from '../docs-component/DocsItem';
 
 export default function MyDocs() {
   const url = "https://foolish-moth-88.telebit.io/docs/";
-  // const url = "http://127.0.0.1:8000/docs/";
+  // const url = "https://foolish-moth-88.telebit.io/docs/";
 
   const [docs, setDocs] = useState([{}]);
 

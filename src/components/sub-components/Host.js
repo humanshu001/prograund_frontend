@@ -5,8 +5,8 @@ export default function Host() {
   const url = "https://foolish-moth-88.telebit.io/posts/";
   const fileUrl = "https://foolish-moth-88.telebit.io/posts/savefile";
   
-  // const url = "http://127.0.0.1:8000/posts/";
-  // const fileUrl = "http://127.0.0.1:8000/posts/savefile";
+  // const url = "https://foolish-moth-88.telebit.io/posts/";
+  // const fileUrl = "https://foolish-moth-88.telebit.io/posts/savefile";
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
 

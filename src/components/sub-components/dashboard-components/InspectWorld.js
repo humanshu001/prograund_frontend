@@ -1,9 +1,10 @@
 import React, {useState,useEffect} from 'react'
 import PostItem from './Post Item/PostItem'
+import Loader from '../Loader';
 
 export default function DebugStress() {
   const url = 'https://foolish-moth-88.telebit.io/professional/';
-  // const url = 'http://127.0.0.1:8000/posts/';
+  // const url = 'https://foolish-moth-88.telebit.io/posts/';
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,15 +46,11 @@ export default function DebugStress() {
   return (
     <>
       {loading ? (
-        <div className="col-md-12 d-flex justify-content-center">
-        <div className="spinner-border text-info m-auto" role="status">
-          <span className="visually-hidden"></span>
-        </div>
-      </div>
+        <Loader/>
       ) : (
         <>
           {posts.map((item) => (
-            <div key={item.post_id}><PostItem title={item.title} post_id={item.post_id} time={item.uploaded_time} likes_count={item.likes_count} user_id={parseInt(item.user_id)} image_link={item.file}/></div>
+            <div key={item.post_id}><PostItem title={item.title} post_id={item.post_id} time={item.uploaded_time} likes_count={item.likes_count} user_id={parseInt(item.user_id)} image_link={item.file}  username={item.user? item.user.username:"ProGraund User"} image={item.user?item.user.image:null}/></div>
           ))}
         </>
       )}
