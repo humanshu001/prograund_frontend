@@ -36,11 +36,8 @@ export default function PostItem(props) {
 
     const Like = () => {
         if (!liked) {
-<<<<<<< HEAD
             console.log("Like");
             console.log(likeId);
-=======
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
             fetch(likeUrl, {
                 method: 'POST',
                 body: JSON.stringify({
@@ -50,10 +47,7 @@ export default function PostItem(props) {
             })
                 .then((res) => res.json())
                 .then((data) => {
-<<<<<<< HEAD
                     // console.log(data);
-=======
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
                     if (data === "Added Successfully") {
                         checkLikeByUser();
                         const postUrl = "https://foolish-moth-88.telebit.io/posts/";
@@ -66,31 +60,17 @@ export default function PostItem(props) {
                         })
                             .then((res) => res.json())
                             .then((data) => {
-<<<<<<< HEAD
                                 console.log(data);
                                 if (data.error) {
                                     alert(data.error);
                                 } else {
                                     setLiked(!liked);
-=======
-                                if (data.error) {
-                                    alert(data.error);
-                                } else {
-                                    setLiked(true);
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
                                     setLikeCount(likes_count + 1);
                                 }
                             });
                     }
                 });
-<<<<<<< HEAD
-        }
-        else {
-            console.log("Dislike");
-            console.log(likeId);
-=======
         } else {
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
             fetch(`${likeUrl}${likeId}/`, {
                 method: 'DELETE',
                 body: JSON.stringify({
@@ -99,16 +79,9 @@ export default function PostItem(props) {
             })
                 .then((res) => res.json())
                 .then((data) => {
-<<<<<<< HEAD
-                    // console.log(data);
-                    if (data === "Deleted Successfully") {
-                        checkLikeByUser();
-                        const postUrl = "http://127.0.0.1:8000/posts/"
-=======
                     if (data === "Deleted Successfully") {
                         checkLikeByUser();
                         const postUrl = "https://foolish-moth-88.telebit.io/posts/";
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
                         fetch(postUrl, {
                             method: 'PUT',
                             body: JSON.stringify({
@@ -118,23 +91,15 @@ export default function PostItem(props) {
                         })
                             .then((res) => res.json())
                             .then((data) => {
-<<<<<<< HEAD
                                 console.log(data);
                                 if (data.error) {
                                     alert(data.error);
                                 } else {
                                     setLiked(!liked);
-=======
-                                if (data.error) {
-                                    alert(data.error);
-                                } else {
-                                    setLiked(false);
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
                                     setLikeCount(likes_count - 1);
                                 }
                             });
                     }
-<<<<<<< HEAD
 
                 });
         };
@@ -200,13 +165,6 @@ export default function PostItem(props) {
 
 
     const trackUrl = `http://127.0.0.1:8000/trackers/`;
-=======
-                });
-        }
-    };
-
-    const trackUrl = `https://foolish-moth-88.telebit.io/trackers/`;
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
 
     const Track = () => {
         fetch(trackUrl, {
@@ -228,11 +186,8 @@ export default function PostItem(props) {
     };
 
     useEffect(() => {
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
         checkLikeByUser();
     }, [user_id, url]);
 
@@ -261,11 +216,7 @@ export default function PostItem(props) {
                         <span key={index}>{line}<br /></span>
                     ))}
                 </p>
-<<<<<<< HEAD
                 {image_link === null || <img src={"https://foolish-moth-88.telebit.io/Files/" + image_link} className="col-md-10 m-auto " alt="" />}
-=======
-                {image_link == null || <img src={"https://foolish-moth-88.telebit.io/Files/" + image_link} className="col-md-11 m-auto " alt="" />}
->>>>>>> 1b38a650b728646b62fd34311080b11f2edd0ab8
                 <div className="actions d-flex justify-content-between mx-2 my-2">
                     <button className={liked ? "liked" : ""} style={{ background: "transparent", border: "none", color: liked ? "red" : "var(--color-5)" }} onClick={Like}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--color-5)" className="bi bi-heart" viewBox="0 0 16 16">
