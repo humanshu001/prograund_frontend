@@ -1,6 +1,7 @@
 import React from 'react'
 import Logo from './Logo'
 import { Link } from 'react-router-dom'
+import icon from "../assets/icon.png"
 
 
 export default function LAside() {
@@ -19,13 +20,14 @@ export default function LAside() {
                     <button className="navbar-toggler tog-butn mt-4 d-lg-none collapsed " type="button" id='change-on-click' data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation" style={{height:'40px',marginBottom:'20px',marginRight:'10px',fontSize:'25px'}}>
                             {'{ }'}
                     </button>
-                <div className="main-image p-0 pl-4" style={{boxSizing:"border-box"}}>
-                    <Logo color="var(--color-5)" />
+                <div className='logo'>
+                    <img src={icon} alt="" className='logo-icon'/>
+                    <h1><b>ProGraund</b></h1>
                 </div>
                     </div>
             <nav id="sidebarMenu" className="main-sidebar-to-close col-md-9 m-auto d-md-block bg-light sidebar collapse">
                 <div className="sidebar-sticky navbar-collapse">
-                    <ul className="nav nav-div flex-column">
+                    <ul className="nav nav-div flex-column text-center">
                         <li className="nav-item my-1">
                             <Link onClick={closeMenu} className="nav-link active" to="/dashboard">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-house-door" viewBox="0 1 16 16">

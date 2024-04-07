@@ -63,7 +63,7 @@ export default function HostDocs() {
             style={{
               backgroundColor: "var(--color-3)",
               border: "none",
-              color: "white",
+              color: "var(--color-2)",
               padding: "5px 10px",
               borderRadius: "7px",
               margin: "5px",
@@ -82,7 +82,7 @@ export default function HostDocs() {
             style={{
               backgroundColor: "var(--color-3)",
               border: "none",
-              color: "white",
+              color: "var(--color-2)",
               padding: "5px 10px",
               borderRadius: "7px",
               margin: "5px",
@@ -101,7 +101,7 @@ export default function HostDocs() {
             style={{
               backgroundColor: "var(--color-3)",
               border: "none",
-              color: "white",
+              color: "var(--color-2)",
               padding: "5px 10px",
               borderRadius: "7px",
               margin: "5px",
@@ -115,7 +115,7 @@ export default function HostDocs() {
             style={{
               backgroundColor: "var(--color-3)",
               border: "none",
-              color: "white",
+              color: "var(--color-2)",
               padding: "5px 10px",
               borderRadius: "7px",
               margin: "5px",
@@ -133,6 +133,7 @@ export default function HostDocs() {
           <br />
           <div
             contentEditable={true}
+            className="d-flex flex-column writing-pad"
             style={{
               overflow: "hidden",
               backgroundColor: "var(--color-1)",
@@ -146,12 +147,15 @@ export default function HostDocs() {
               "&:active": { border: "none", outline: "none" },
             }}
             id="titleArea"
-            aria-placeholder="Write your title here..."
-            placeholder="Write your title here..."
+            placeholder="Title"
           ></div>
+          <style dangerouslySetInnerHTML={{__html:`.writing-pad[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: var(--color-5); 
+}
+`}}></style>
           <div
-            aria-placeholder="Write your content here..."
-            placeholder="Write your content here..."
+            placeholder="start writing here..."
             className="d-flex flex-column writing-pad"
             style={{
               overflow: "hidden",
@@ -170,7 +174,7 @@ export default function HostDocs() {
           <button
             onClick={handleSave}
             className="btn btn-primary mt-3"
-            style={{ backgroundColor: "var(--color-5)", border: "none" }}
+            style={{ backgroundColor: "var(--color-5)", border: "none" ,color:'var(--color-1)',padding:'10px 15px',borderRadius:'7px'}}
           >
             Save Changes
           </button>

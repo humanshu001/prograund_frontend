@@ -185,8 +185,8 @@ export default function Host() {
             <br />
               <select name="type" className="type-select" required>
                 <option disabled>---Select type of Post---</option>
-                <option value="Professional">Professional</option>
                 <option value="Funny">Funny</option>
+                <option value="Professional">Professional</option>
               </select>
             <input
               type="file"

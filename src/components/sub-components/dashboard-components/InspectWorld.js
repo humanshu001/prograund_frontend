@@ -37,10 +37,15 @@ export default function DebugStress() {
     }
   };
   
-  // now we will call the function to fetch all posts
   useEffect(() => {
     getData(page);
   }, [page]);
+
+  const reload = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    getData(page);
+  }
 
 
   return (
@@ -52,6 +57,9 @@ export default function DebugStress() {
           {posts.map((item) => (
             <div key={item.post_id}><PostItem title={item.title} post_id={item.post_id} time={item.uploaded_time} likes_count={item.likes_count} user_id={parseInt(item.user_id)} image_link={item.file}  username={item.user? item.user.username:"ProGraund User"} image={item.user?item.user.image:null}/></div>
           ))}
+           <div className="d-flex justify-content-center">
+          <button onClick={reload} className='py-2 px-3 mb-5' style={{backgroundColor:'var(--color-5)',border:'none',borderRadius:'10px',color:'var(--color-2)'}}>Reload</button>
+          </div>
         </>
       )}
     </>
