@@ -105,7 +105,7 @@ export default function PostItem(props) {
         };
     };
 
-    const commentUrl = `http://127.0.0.1:8000/comments/`; // Assuming this is the endpoint for comments
+    const commentUrl = `https://foolish-moth-88.telebit.io/comments/`; // Assuming this is the endpoint for comments
 
     // Function to handle posting a comment
     const postComment = async () => {
@@ -137,7 +137,7 @@ export default function PostItem(props) {
 
 
     const fetchComments = async () => {
-        const commentsUrl = `http://127.0.0.1:8000/comments-by-post/`; // Adjust the URL according to your API endpoint
+        const commentsUrl = `https://foolish-moth-88.telebit.io/comments-by-post/`; // Adjust the URL according to your API endpoint
         try {
             fetch(commentsUrl,{
                 method:'POST',
@@ -163,7 +163,7 @@ export default function PostItem(props) {
     }, [user_id]);
 
 
-    const trackUrl = `http://127.0.0.1:8000/trackers/`;
+    const trackUrl = `https://foolish-moth-88.telebit.io/trackers/`;
 
     const Track = () => {
         fetch(trackUrl, {
