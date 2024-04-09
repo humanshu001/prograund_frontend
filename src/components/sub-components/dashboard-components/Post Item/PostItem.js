@@ -8,7 +8,7 @@ export default function PostItem(props) {
 
     const url = `https://foolish-moth-88.telebit.io/users/`;
     const likeUrl = `https://foolish-moth-88.telebit.io/likes/`;
-    const trackUrl = `http://127.0.0.1:8000/trackers/`;
+    const trackUrl = `https://foolish-moth-88.telebit.io/trackers/`;
 
 
     const [liked, setLiked] = useState(false);
