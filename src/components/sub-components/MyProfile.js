@@ -11,8 +11,11 @@ const user_id = parseInt(window.location.href.split('/')[4]) || 1;
 
   
   const url = `https://foolish-moth-88.telebit.io/profile/`
+  const track_record  = `https://foolish-moth-88.telebit.io/track-record/`
 
   const [user, setUser] = useState({});
+  const [trackers, setTrackers] = useState([]);
+  const [trackings, setTrackings] = useState([]);
 
   useEffect(() => {
     fetch(url+user_id,{
@@ -28,6 +31,22 @@ const user_id = parseInt(window.location.href.split('/')[4]) || 1;
   }, [user_id,url]);
 
 
+  useEffect(() => {
+    fetch(track_record,{
+      method: 'POST',
+      body: JSON.stringify({user_id: user_id})
+    })
+      .then(response => response.json())
+      .then(data => {
+        setTrackers(data.trackers);
+        setTrackings(data.trackings);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  } , [user_id,track_record]);
+
+
   return (
     <>
       <div>
@@ -41,7 +60,14 @@ const user_id = parseInt(window.location.href.split('/')[4]) || 1;
         </div>
       </div>
       <div className='bio'>
-        <h6 style={{ fontWeight: '700', padding: '0 30px', color: 'var(--color-4)' }}>35 Trackers || 13 Trackings</h6>
+
+
+
+        <h6 style={{ fontWeight: '700', padding: '0 30px', color: 'var(--color-4)' }}>{trackers} Trackers || {trackings} Trackings</h6>
+
+
+
+
         <p style={{ fontSize: '15px', padding: '0 20px', textAlign: 'justify' }}>{user.bio ? user.bio : ""}</p>
       </div>
       <div className="links d-flex justify-content-around align-items-center mb-4" style={{ height: '40px' }}>

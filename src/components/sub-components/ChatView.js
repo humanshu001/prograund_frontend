@@ -67,8 +67,7 @@ export default function ChatView() {
     useEffect(() => {
         const chat = document.querySelector('.chat-messages');
         chat.scrollTop = chat.scrollHeight;
-    }, [message]);
-
+    }, []);
 
 return (
     <>

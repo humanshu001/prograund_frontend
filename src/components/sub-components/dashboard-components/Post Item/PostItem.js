@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 export default function PostItem(props) {
     let { title, image_link, user_id, post_id, likes_count, time, image, username, share_count } = props;
 
-    const url = `https://foolish-moth-88.telebit.io/users/`;
     const likeUrl = `https://foolish-moth-88.telebit.io/likes/`;
     const trackUrl = `https://foolish-moth-88.telebit.io/trackers/`;
 
@@ -25,9 +24,8 @@ export default function PostItem(props) {
                 method: 'GET'
             });
             const data = await response.json();
-            // console.log(data);
+            // eslint-disable-next-line
             const filteredTracks = data.filter((item) => item.user_id == user_id && item.tracked_by == parseInt(localStorage.getItem('sessionId')));
-            console.log(filteredTracks);
             if (data.length > 0
                 && filteredTracks.length > 0) {
                 setTracked(true);
@@ -42,7 +40,7 @@ export default function PostItem(props) {
 
     useEffect(() => {
         checkTrackByUser();
-    }, [user_id]);
+    });
 
     const Track = async () => {
         if(!tracked){
@@ -56,7 +54,6 @@ export default function PostItem(props) {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setTracked(true);
                 checkTrackByUser();
             })
@@ -82,6 +79,7 @@ export default function PostItem(props) {
                 method: 'GET'
             });
             const data = await response.json();
+            // eslint-disable-next-line
             const filteredLikes = data.filter((item) => item.post_id == post_id && item.user_id == localStorage.getItem('sessionId'));
             if (filteredLikes.length > 0) {
                 setLiked(true);
@@ -216,17 +214,12 @@ export default function PostItem(props) {
     useEffect(() => {
 
         fetchComments();
-    }, [post_id]);
+    });
+
 
     useEffect(() => {
-        // Fetch user details, etc.
-    }, [user_id]);
-
-    useEffect(() => {
-
-
         checkLikeByUser();
-    }, [user_id, url]);
+    });
 
     return (
         <>
@@ -255,7 +248,7 @@ export default function PostItem(props) {
             
             `}}></style>
             <div className="post p-3 card col-md-10 col-sm-12 m-auto" style={{ borderRadius: "20px", backgroundColor: "var(--color-2)" }}>
-                <div className="" style={{ display: "flex", justifyContent: "space-between" }}>
+                <div className="px-2" style={{ display: "flex", justifyContent: "space-between" }}>
                     <div className="d-flex">
                         <img src={image ? "https://foolish-moth-88.telebit.io/Files/" + image : profile} alt="" style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "15px", border: "2px solid var(--color-4)" }} className='user-image' />
                         <div className="user-info">
@@ -267,9 +260,12 @@ export default function PostItem(props) {
                         </div>
                     </div>
                     <div className="tracker">
-                        <button style={{ color: "var(--color-1)", backgroundColor: "var(--color-4)", border: "none", outline: "none", borderRadius: "5px", padding: "8px", }} onClick={Track}>
+                        {
+                            user_id === parseInt(localStorage.getItem('sessionId')) ? null :
+                            <button style={{ color: "var(--color-1)", backgroundColor: "var(--color-4)", border: "none", outline: "none", borderRadius: "5px", padding: "8px", }} onClick={Track}>
                             <h6 style={{ fontWeight: '800', marginBottom: '0', fontFamily: 'fira code' }}><b>{(!tracked) ? "TRACK" : "UNTRACK"}</b></h6>
                         </button>
+                        }
                     </div>
                 </div>
                 <p className="col-md-11 col-ms-12 m-auto">

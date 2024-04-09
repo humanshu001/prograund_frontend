@@ -470,6 +470,7 @@ a:hover {
   }
   .main{
     margin-top: 50px;
+    height: 93vh!important;
   }
   .post >p{
       font-size: 12px;
