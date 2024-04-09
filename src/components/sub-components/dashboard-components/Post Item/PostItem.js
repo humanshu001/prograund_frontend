@@ -8,6 +8,7 @@ export default function PostItem(props) {
 
     const url = `https://foolish-moth-88.telebit.io/users/`;
     const likeUrl = `https://foolish-moth-88.telebit.io/likes/`;
+    const trackUrl = `http://127.0.0.1:8000/trackers/`;
 
 
     const [liked, setLiked] = useState(false);
@@ -15,6 +16,65 @@ export default function PostItem(props) {
     const [likeCount, setLikeCount] = useState(likes_count);
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
+    const [tracked, setTracked] = useState(false);
+    const [trackId, setTrackId] = useState();
+
+    const checkTrackByUser = async () => {
+        try {
+            const response = await fetch(trackUrl, {
+                method: 'GET'
+            });
+            const data = await response.json();
+            // console.log(data);
+            const filteredTracks = data.filter((item) => item.user_id == user_id && item.tracked_by == parseInt(localStorage.getItem('sessionId')));
+            console.log(filteredTracks);
+            if (data.length > 0
+                && filteredTracks.length > 0) {
+                setTracked(true);
+                setTrackId(filteredTracks[0].id);
+            } else {
+                setTracked(false);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    useEffect(() => {
+        checkTrackByUser();
+    }, [user_id]);
+
+    const Track = async () => {
+        if(!tracked){
+            console.log("Track");
+            fetch(trackUrl, {
+                method: 'POST',
+                body: JSON.stringify({
+                    user_id: user_id,
+                    tracked_by: parseInt(localStorage.getItem('sessionId'))
+                })
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setTracked(true);
+                checkTrackByUser();
+            })
+        }else{
+            console.log("Untrack");
+            fetch(`${trackUrl}${trackId}/`, {
+                method: 'DELETE',
+                body: JSON.stringify({
+                    id: parseInt(trackId)
+                })
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setTracked(false);
+            })
+        }
+    }
 
     const checkLikeByUser = async () => {
         try {
@@ -162,28 +222,6 @@ export default function PostItem(props) {
         // Fetch user details, etc.
     }, [user_id]);
 
-
-    const trackUrl = `https://foolish-moth-88.telebit.io/trackers/`;
-
-    const Track = () => {
-        fetch(trackUrl, {
-            method: 'POST',
-            body: JSON.stringify({
-                user_id: user_id,
-                tracked_by: parseInt(localStorage.getItem('sessionId'))
-            })
-        })
-
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.error) {
-                    alert(data.error);
-                } else {
-                    setLiked(!liked);
-                }
-            });
-    };
-
     useEffect(() => {
 
 
@@ -230,7 +268,7 @@ export default function PostItem(props) {
                     </div>
                     <div className="tracker">
                         <button style={{ color: "var(--color-1)", backgroundColor: "var(--color-4)", border: "none", outline: "none", borderRadius: "5px", padding: "8px", }} onClick={Track}>
-                            <h6 style={{ fontWeight: '800', marginBottom: '0', fontFamily: 'fira code' }}><b>TRACK</b></h6>
+                            <h6 style={{ fontWeight: '800', marginBottom: '0', fontFamily: 'fira code' }}><b>{(!tracked) ? "TRACK" : "UNTRACK"}</b></h6>
                         </button>
                     </div>
                 </div>
