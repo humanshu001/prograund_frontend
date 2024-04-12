@@ -9,7 +9,7 @@ export default function Register() {
 
     const [password, setPassword] = useState('');
     const [cpassword, setCPassword] = useState('');
-    const url = "https://foolish-moth-88.telebit.io/users/";
+    const url = "https://popular-parrot-100.telebit.io/users/";
     const [loading,setLoading] = useState(false);
 
 

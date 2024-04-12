@@ -7,7 +7,7 @@ const ForgotPassword = () => {
     const sendRecoveryLink = async (e) => {
         const data = new FormData(e.target);
         e.preventDefault();
-        const url = "https://foolish-moth-88.telebit.io/forgot-password/";
+        const url = "https://popular-parrot-100.telebit.io/forgot-password/";
         await fetch(url, {
             method: 'POST',
             headers: {

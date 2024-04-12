@@ -5,7 +5,7 @@ export default function Login() {
     if(localStorage.getItem("sessionId") !== null){
         window.location.href="/dashboard";
     }
-    const url = "https://foolish-moth-88.telebit.io/auth/";
+    const url = "https://popular-parrot-100.telebit.io/auth/";
 
     const handleSubmit = async (e) =>{
         e.preventDefault();

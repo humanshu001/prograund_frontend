@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function HostDocs() {
-  const url = 'https://foolish-moth-88.telebit.io/docs/';
-  // const url = "https://foolish-moth-88.telebit.io/docs/";
+  const url = 'https://popular-parrot-100.telebit.io/docs/';
+  // const url = "https://popular-parrot-100.telebit.io/docs/";
 
   const handleSave = (e) => {
     e.preventDefault();

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 export default function Host() {
-  const url = "https://foolish-moth-88.telebit.io/posts/";
-  const fileUrl = "https://foolish-moth-88.telebit.io/posts/savefile";
+  const url = "https://popular-parrot-100.telebit.io/posts/";
+  const fileUrl = "https://popular-parrot-100.telebit.io/posts/savefile";
   
-  // const url = "https://foolish-moth-88.telebit.io/posts/";
-  // const fileUrl = "https://foolish-moth-88.telebit.io/posts/savefile";
+  // const url = "https://popular-parrot-100.telebit.io/posts/";
+  // const fileUrl = "https://popular-parrot-100.telebit.io/posts/savefile";
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
 

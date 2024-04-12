@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 export default function PostItem(props) {
     let { title, image_link, user_id, post_id, likes_count, time, image, username, share_count } = props;
 
-    const likeUrl = `https://foolish-moth-88.telebit.io/likes/`;
-    const trackUrl = `https://foolish-moth-88.telebit.io/trackers/`;
+    const likeUrl = `https://popular-parrot-100.telebit.io/likes/`;
+    const trackUrl = `https://popular-parrot-100.telebit.io/trackers/`;
 
 
     const [liked, setLiked] = useState(false);
@@ -108,7 +108,7 @@ export default function PostItem(props) {
                     // console.log(data);
                     if (data === "Added Successfully") {
                         checkLikeByUser();
-                        const postUrl = "https://foolish-moth-88.telebit.io/posts/";
+                        const postUrl = "https://popular-parrot-100.telebit.io/posts/";
                         fetch(postUrl, {
                             method: 'PUT',
                             body: JSON.stringify({
@@ -139,7 +139,7 @@ export default function PostItem(props) {
                 .then((data) => {
                     if (data === "Deleted Successfully") {
                         checkLikeByUser();
-                        const postUrl = "https://foolish-moth-88.telebit.io/posts/";
+                        const postUrl = "https://popular-parrot-100.telebit.io/posts/";
                         fetch(postUrl, {
                             method: 'PUT',
                             body: JSON.stringify({
@@ -163,7 +163,7 @@ export default function PostItem(props) {
         };
     };
 
-    const commentUrl = `https://foolish-moth-88.telebit.io/comments/`; // Assuming this is the endpoint for comments
+    const commentUrl = `https://popular-parrot-100.telebit.io/comments/`; // Assuming this is the endpoint for comments
 
     // Function to handle posting a comment
     const postComment = async () => {
@@ -195,7 +195,7 @@ export default function PostItem(props) {
 
 
     const fetchComments = async () => {
-        const commentsUrl = `https://foolish-moth-88.telebit.io/comments-by-post/`; // Adjust the URL according to your API endpoint
+        const commentsUrl = `https://popular-parrot-100.telebit.io/comments-by-post/`; // Adjust the URL according to your API endpoint
         try {
             fetch(commentsUrl,{
                 method:'POST',
@@ -250,7 +250,7 @@ export default function PostItem(props) {
             <div className="post p-3 card col-md-10 col-sm-12 m-auto" style={{ borderRadius: "20px", backgroundColor: "var(--color-2)" }}>
                 <div className="px-2" style={{ display: "flex", justifyContent: "space-between" }}>
                     <div className="d-flex">
-                        <img src={image ? "https://foolish-moth-88.telebit.io/Files/" + image : profile} alt="" style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "15px", border: "2px solid var(--color-4)" }} className='user-image' />
+                        <img src={image ? "https://popular-parrot-100.telebit.io/Files/" + image : profile} alt="" style={{ width: "60px", height: "60px", borderRadius: "50%", marginRight: "15px", border: "2px solid var(--color-4)" }} className='user-image' />
                         <div className="user-info">
                             <Link to={`/profile/${user_id}`} style={{ color: 'var(--color-5)' }}><h5 className="m-0" >{username ? username : " "}</h5></Link>
                             <p className="m-0">{
@@ -273,7 +273,7 @@ export default function PostItem(props) {
                         <span key={index}>{line}<br /></span>
                     ))}
                 </p>
-                {image_link === null || <img src={"https://foolish-moth-88.telebit.io/Files/" + image_link} className="col-md-10 m-auto post-image" alt="" />}
+                {image_link === null || <img src={"https://popular-parrot-100.telebit.io/Files/" + image_link} className="col-md-10 m-auto post-image" alt="" />}
                 <div className="actions d-flex justify-content-between mx-2 pt-4">
                     <button className={liked ? "liked" : ""} style={{ background: "transparent", border: "none", color: liked ? "red" : "var(--color-5)", display:'flex'}} onClick={Like}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--color-5)" className="bi bi-heart" viewBox="0 0 16 16">
@@ -303,7 +303,7 @@ export default function PostItem(props) {
                                     {comments.length > 0 ? comments.map((cmt, index) => (
                                         <div key={index}>
                                         <div className="comment" >
-                                            <h6><img style={{width:'30px',borderRadius:'30px', border:'1px solid var(--color-2)',height:'30px', objectFit:'cover'}} src={"https://foolish-moth-88.telebit.io/Files/"+ cmt.user_details.image} alt="" /> {cmt.user_details.username}</h6>
+                                            <h6><img style={{width:'30px',borderRadius:'30px', border:'1px solid var(--color-2)',height:'30px', objectFit:'cover'}} src={"https://popular-parrot-100.telebit.io/Files/"+ cmt.user_details.image} alt="" /> {cmt.user_details.username}</h6>
                                            <div className='pl-5'style={{fontWeight:'300'}}> {cmt.text}</div>
                                         <div className="small text-right w-100" style={{fontSize:'10px'}}> {moment(cmt.time).fromNow()} </div>
                                         </div>

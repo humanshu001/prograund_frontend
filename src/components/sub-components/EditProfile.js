@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 export default function EditProfile() {
     const user_id = parseInt(localStorage.getItem("sessionId"));
 
-    const url = `https://foolish-moth-88.telebit.io/users/`;
+    const url = `https://popular-parrot-100.telebit.io/users/`;
 
-    const fileUrl = `https://foolish-moth-88.telebit.io/posts/savefile`;
+    const fileUrl = `https://popular-parrot-100.telebit.io/posts/savefile`;
 
 
     const [user, setUser] = useState({
@@ -147,7 +147,7 @@ export default function EditProfile() {
 
     useEffect(() => {
         const getUserData = async () => {
-            await fetch("https://foolish-moth-88.telebit.io/profile/" + user_id,{
+            await fetch("https://popular-parrot-100.telebit.io/profile/" + user_id,{
                 method: 'GET',
                 headers: {
                     "ngrok-skip-browser-warning": "1"

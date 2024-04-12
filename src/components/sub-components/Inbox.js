@@ -5,7 +5,7 @@ import Loader from './Loader';
 
 export default function Inbox() {
 
-  const url = 'https://foolish-moth-88.telebit.io/my-messages/';
+  const url = 'https://popular-parrot-100.telebit.io/my-messages/';
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
 

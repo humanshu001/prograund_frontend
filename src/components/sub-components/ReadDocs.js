@@ -7,7 +7,7 @@ export default function ReadDocs() {
 
     const [docs, setDocs] = useState([{}]);
 
-    const url = `https://foolish-moth-88.telebit.io/docs/`;
+    const url = `https://popular-parrot-100.telebit.io/docs/`;
     useEffect(() => {
         fetch(url,{
             method: 'GET',

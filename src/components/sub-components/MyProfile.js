@@ -10,8 +10,8 @@ const user_id = parseInt(window.location.href.split('/')[4]) || 1;
 
 
   
-  const url = `https://foolish-moth-88.telebit.io/profile/`
-  const track_record  = `https://foolish-moth-88.telebit.io/track-record/`
+  const url = `https://popular-parrot-100.telebit.io/profile/`
+  const track_record  = `https://popular-parrot-100.telebit.io/track-record/`
 
   const [user, setUser] = useState({});
   const [trackers, setTrackers] = useState([]);
@@ -50,10 +50,10 @@ const user_id = parseInt(window.location.href.split('/')[4]) || 1;
   return (
     <>
       <div>
-        <img src={user.banner ? "https://foolish-moth-88.telebit.io/Files/" + user.banner : banner} alt='test' style={{ width: '100%',height:'23vh',objectFit:'cover' }}></img>
+        <img src={user.banner ? "https://popular-parrot-100.telebit.io/Files/" + user.banner : banner} alt='test' style={{ width: '100%',height:'23vh',objectFit:'cover' }}></img>
       </div>
       <div className='d-flex justify-content-evenly' style={{ marginBottom: '-20px' }}>
-        <img src={user.image ? "https://foolish-moth-88.telebit.io/Files/" + user.image : profile} alt="" style={{ width: '110px', height: '110px', borderRadius: '50%', position: 'relative', top: '-55px', marginLeft: '20px', border: '2px solid var(--color-4)', objectFit:'cover' }} className='profile-image' />
+        <img src={user.image ? "https://popular-parrot-100.telebit.io/Files/" + user.image : profile} alt="" style={{ width: '110px', height: '110px', borderRadius: '50%', position: 'relative', top: '-55px', marginLeft: '20px', border: '2px solid var(--color-4)', objectFit:'cover' }} className='profile-image' />
         <div className="mx-3 user-data">
           <h3 className='mb-0 mt-1'>{user.fname || 'ProGraund User'} {user.lname || ''}</h3>
           <h6>{user.username || 'Username'}</h6>

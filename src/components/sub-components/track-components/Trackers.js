@@ -4,7 +4,7 @@ import profile from '../../../assets/profile.png';
 
 export default function Trackers() {
   const [trackers, setTrackers] = useState([]);
-  const url = "https://foolish-moth-88.telebit.io/tracker-all/";
+  const url = "https://popular-parrot-100.telebit.io/tracker-all/";
 
   const getTracker = async() => {
     await fetch(url,{
@@ -29,7 +29,7 @@ export default function Trackers() {
         {trackers.map((tracker,index) => (
           <div key={index} className="chat d-flex justify-content-between p-2 align-items-center m-4" style={{ backgroundColor: "var(--color-2)",borderRadius:'5px'}}>
           <div className="d-flex ">
-            <img src={tracker.tracked_by_user.image ? "https://foolish-moth-88.telebit.io/Files/"+tracker.tracked_by_user.image : profile} style={{ width: "70px", height: "70px", borderRadius: "50%", border: "2px solid var(--color-4)"}} className='' alt="" />
+            <img src={tracker.tracked_by_user.image ? "https://popular-parrot-100.telebit.io/Files/"+tracker.tracked_by_user.image : profile} style={{ width: "70px", height: "70px", borderRadius: "50%", border: "2px solid var(--color-4)"}} className='' alt="" />
             <div className="ml-2 chat-text d-flex flex-column justify-content-center">
               <h6 className='mb-0 mt-3'>{tracker.tracked_by_user.fname} {tracker.tracked_by_user.lname}</h6>
               <p style={{fontSize:'13px',marginLeft:'2px'}}>{tracker.tracked_by_user.username}</p>

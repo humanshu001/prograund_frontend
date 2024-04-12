@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 
 export default function ResetPassword() {
-    const url = "https://foolish-moth-88.telebit.io/users/";
+    const url = "https://popular-parrot-100.telebit.io/users/";
 
     const [user, setUser] = useState({});
 

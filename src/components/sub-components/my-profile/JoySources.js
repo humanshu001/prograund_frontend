@@ -5,7 +5,7 @@ import Loader from '../Loader';
 
 
 export default function JoySources() {
-  const url = "https://foolish-moth-88.telebit.io/posts/";
+  const url = "https://popular-parrot-100.telebit.io/posts/";
 
   // declare props
 

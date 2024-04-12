@@ -3,8 +3,8 @@ import PostItem from './Post Item/PostItem'
 import Loader from '../Loader';
 
 export default function DebugStress() {
-  // const url = 'https://foolish-moth-88.telebit.io/funny/';
-  const url = 'https://foolish-moth-88.telebit.io/funny/';
+  // const url = 'https://popular-parrot-100.telebit.io/funny/';
+  const url = 'https://popular-parrot-100.telebit.io/funny/';
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Loader from '../Loader';
 
 export default function Snippets(props) {
-  const url = "https://foolish-moth-88.telebit.io/posts/";
+  const url = "https://popular-parrot-100.telebit.io/posts/";
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);

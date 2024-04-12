@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import Loader from './Loader';
 
 export default function ChatView() {
-    const url = "https://foolish-moth-88.telebit.io/get-messages/";
+    const url = "https://popular-parrot-100.telebit.io/get-messages/";
     const [message,setMessages] = useState([]);
     const id = useParams()
     const user_id = localStorage.getItem('sessionId');
@@ -28,7 +28,7 @@ export default function ChatView() {
     },[user_id,id]);
     
     useEffect(() => {
-        fetch('https://foolish-moth-88.telebit.io/profile/' + id.id, {
+        fetch('https://popular-parrot-100.telebit.io/profile/' + id.id, {
             method: 'GET'
         })
         .then(response => response.json())
@@ -54,7 +54,7 @@ export default function ChatView() {
         formData.append('message', newMessage.message);
         formData.append('is_read', false);
 
-        fetch('https://foolish-moth-88.telebit.io/send-messages/', {
+        fetch('https://popular-parrot-100.telebit.io/send-messages/', {
             method: 'POST',
             body: formData
         })

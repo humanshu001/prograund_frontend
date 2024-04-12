@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import DocsItem from "./docs-component/DocsItem";
 
 export default function Docs() {
-  const url = "https://foolish-moth-88.telebit.io/docs/";
-  // const url = "https://foolish-moth-88.telebit.io/docs/";
+  const url = "https://popular-parrot-100.telebit.io/docs/";
+  // const url = "https://popular-parrot-100.telebit.io/docs/";
 
   const [docs, setDocs] = useState([{}]);
 
