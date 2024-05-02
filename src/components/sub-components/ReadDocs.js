@@ -34,7 +34,7 @@ return (
                     <div className="col-md-12" id='article'>
                    
                                     <h1 style={{fontSize:'50px'}} dangerouslySetInnerHTML={{ __html: docs.title }}></h1>
-                                    <p dangerouslySetInnerHTML={{ __html: docs.content }}></p>
+                                    <p style={{fontWeight:'100'}} dangerouslySetInnerHTML={{ __html: docs.content }}></p>
                          
                     </div>
                 </div>
